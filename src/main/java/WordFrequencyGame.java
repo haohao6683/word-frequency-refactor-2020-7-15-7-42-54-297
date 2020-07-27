@@ -52,9 +52,9 @@ public class WordFrequencyGame {
         Map<String, List<Input>> resultMap = new HashMap<>();
         for (Input input : inputList){
             if (!resultMap.containsKey(input.getValue())) {
-                List<Input> arr = new ArrayList<>();
-                arr.add(input);
-                resultMap.put(input.getValue(), arr);
+                List<Input> wordCountArr = new ArrayList<>();
+                wordCountArr.add(input);
+                resultMap.put(input.getValue(), wordCountArr);
             }
             else {
                 resultMap.get(input.getValue()).add(input);
