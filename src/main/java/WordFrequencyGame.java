@@ -9,22 +9,22 @@ public class WordFrequencyGame {
     public static final String SPACE_PATTERN = "\\s+";
     public static final String WRAP_PATTERN = "\n";
     public static final String SPACE_STRING = " ";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String sentence) {
         try {
-
             String[] words = sentence.split(SPACE_PATTERN);
 
             List<Input> inputList = getWordInfoList(words);
 
             StringJoiner joiner = new StringJoiner(WRAP_PATTERN);
             for (Input wordInfo : inputList) {
-                String result = wordInfo.getValue() + SPACE_STRING +wordInfo.getWordCount();
+                String result = wordInfo.getValue() + SPACE_STRING + wordInfo.getWordCount();
                 joiner.add(result);
             }
             return joiner.toString();
         } catch (Exception e) {
-            return "Calculate Error";
+            return CALCULATE_ERROR;
         }
     }
 
@@ -50,13 +50,12 @@ public class WordFrequencyGame {
 
     private Map<String, List<Input>> getResultMap(List<Input> inputList) {
         Map<String, List<Input>> resultMap = new HashMap<>();
-        for (Input input : inputList){
+        for (Input input : inputList) {
             if (!resultMap.containsKey(input.getValue())) {
                 List<Input> wordCountArr = new ArrayList<>();
                 wordCountArr.add(input);
                 resultMap.put(input.getValue(), wordCountArr);
-            }
-            else {
+            } else {
                 resultMap.get(input.getValue()).add(input);
             }
         }
