@@ -6,10 +6,10 @@ import java.util.StringJoiner;
 
 public class WordFrequencyGame {
 
-    public static final String SPACE_PATTERN = "\\s+";
-    public static final String WRAP_PATTERN = "\n";
-    public static final String SPACE_STRING = " ";
-    public static final String CALCULATE_ERROR = "Calculate Error";
+    private static final String SPACE_PATTERN = "\\s+";
+    private static final String WRAP_PATTERN = "\n";
+    private static final String SPACE_STRING = " ";
+    private static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String sentence) {
         try {
