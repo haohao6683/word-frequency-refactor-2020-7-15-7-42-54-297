@@ -11,27 +11,20 @@ public class WordFrequencyGame {
     public static final String SPACE_STRING = " ";
 
     public String getResult(String sentence) {
+        try {
 
+            String[] words = sentence.split(SPACE_PATTERN);
 
-        if (sentence.split(SPACE_PATTERN).length==1) {
-            return sentence + " 1";
-        } else {
+            List<Input> inputList = getWordInfoList(words);
 
-            try {
-
-                String[] words = sentence.split(SPACE_PATTERN);
-
-                List<Input> inputList = getWordInfoList(words);
-
-                StringJoiner joiner = new StringJoiner(WRAP_PATTERN);
-                for (Input wordInfo : inputList) {
-                    String result = wordInfo.getValue() + SPACE_STRING +wordInfo.getWordCount();
-                    joiner.add(result);
-                }
-                return joiner.toString();
-            } catch (Exception e) {
-                return "Calculate Error";
+            StringJoiner joiner = new StringJoiner(WRAP_PATTERN);
+            for (Input wordInfo : inputList) {
+                String result = wordInfo.getValue() + SPACE_STRING +wordInfo.getWordCount();
+                joiner.add(result);
             }
+            return joiner.toString();
+        } catch (Exception e) {
+            return "Calculate Error";
         }
     }
 
