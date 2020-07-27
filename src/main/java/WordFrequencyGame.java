@@ -35,7 +35,7 @@ public class WordFrequencyGame {
             inputList.add(input);
         }
 
-        Map<String, List<Input>> wordsInfoMap =getListMap(inputList);
+        Map<String, List<Input>> wordsInfoMap = getResultMap(inputList);
 
         List<Input> wordsInfoList = new ArrayList<>();
         for (Map.Entry<String, List<Input>> entry : wordsInfoMap.entrySet()) {
@@ -48,18 +48,18 @@ public class WordFrequencyGame {
         return inputList;
     }
 
-    private Map<String, List<Input>> getListMap(List<Input> inputList) {
-        Map<String, List<Input>> map = new HashMap<>();
+    private Map<String, List<Input>> getResultMap(List<Input> inputList) {
+        Map<String, List<Input>> resultMap = new HashMap<>();
         for (Input input : inputList){
-            if (!map.containsKey(input.getValue())) {
+            if (!resultMap.containsKey(input.getValue())) {
                 ArrayList arr = new ArrayList<>();
                 arr.add(input);
-                map.put(input.getValue(), arr);
+                resultMap.put(input.getValue(), arr);
             }
             else {
-                map.get(input.getValue()).add(input);
+                resultMap.get(input.getValue()).add(input);
             }
         }
-        return map;
+        return resultMap;
     }
 }
