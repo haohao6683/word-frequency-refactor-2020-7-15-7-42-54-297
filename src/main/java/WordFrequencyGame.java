@@ -27,10 +27,10 @@ public class WordFrequencyGame {
                     inputList.add(input);
                 }
 
-                Map<String, List<Input>> map =getListMap(inputList);
+                Map<String, List<Input>> wordsInfoMap =getListMap(inputList);
 
                 List<Input> list = new ArrayList<>();
-                for (Map.Entry<String, List<Input>> entry : map.entrySet()) {
+                for (Map.Entry<String, List<Input>> entry : wordsInfoMap.entrySet()) {
                     Input input = new Input(entry.getKey(), entry.getValue().size());
                     list.add(input);
                 }
