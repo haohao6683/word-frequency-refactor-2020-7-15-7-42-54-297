@@ -21,22 +21,7 @@ public class WordFrequencyGame {
 
                 String[] words = sentence.split(SPACE_PATTERN);
 
-                List<Input> inputList = new ArrayList<>();
-                for (String word : words) {
-                    Input input = new Input(word, 1);
-                    inputList.add(input);
-                }
-
-                Map<String, List<Input>> wordsInfoMap =getListMap(inputList);
-
-                List<Input> wordsInfoList = new ArrayList<>();
-                for (Map.Entry<String, List<Input>> entry : wordsInfoMap.entrySet()) {
-                    Input input = new Input(entry.getKey(), entry.getValue().size());
-                    wordsInfoList.add(input);
-                }
-                inputList = wordsInfoList;
-
-                inputList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
+                List<Input> inputList = getWordInfoList(words);
 
                 StringJoiner joiner = new StringJoiner(WRAP_PATTERN);
                 for (Input wordInfo : inputList) {
@@ -48,6 +33,26 @@ public class WordFrequencyGame {
                 return "Calculate Error";
             }
         }
+    }
+
+    private List<Input> getWordInfoList(String[] words) {
+        List<Input> inputList = new ArrayList<>();
+        for (String word : words) {
+            Input input = new Input(word, 1);
+            inputList.add(input);
+        }
+
+        Map<String, List<Input>> wordsInfoMap =getListMap(inputList);
+
+        List<Input> wordsInfoList = new ArrayList<>();
+        for (Map.Entry<String, List<Input>> entry : wordsInfoMap.entrySet()) {
+            Input input = new Input(entry.getKey(), entry.getValue().size());
+            wordsInfoList.add(input);
+        }
+        inputList = wordsInfoList;
+
+        inputList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
+        return inputList;
     }
 
     private Map<String, List<Input>> getListMap(List<Input> inputList) {
